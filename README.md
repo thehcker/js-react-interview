@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Developer Test: Frontend Development
 
-## Available Scripts
+**Summary**
 
-In the project directory, you can run:
+The following standard technical assessment were taken and  the following will be assessed:
 
-### `yarn start`
+ 1. Speed
+ 2. How you write code using ReactJS. (correctness, efficiency, readable, clear).
+ 2. How you decompose a problem and design a solution.
+ 3. How you are able to maintain a consistent state throughout the application using a dedicated state management container.
+ 4. How you are able to conform to ECMAScript standards for JavaScript throughout the application.
+ 5. Are you able to consume an API to communicate with an external data source within your application?
+ 6. How complete and thoughtful your implementation is. Can the reviewer run it immediately?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Quiz:**
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Given the below API endpoint and attached design template, you are required to complete the following tasks:
+ 1. Setup a fresh web app based on ReactJS: The setup should use Webpack as the dedicated module bundler and dependency manager for your web app. It should also use either yarn or npm for package management.
+ 2. Implement the Browse and the Edit endpoints below.
 
-### `yarn test`
+**Hint:**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For speed, you could use CreateReactApp contains pre configured webpack settings.
+  
+1. Establish a stable state tree for the application using redux for ReactJS.
+3. Once all is set, use the provided API endpoint to fetch data from an external server and display it in your web app, conforming a design template of your choice. 
 
-### `yarn build`
+**Note:**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It is key for your web app to use a state management container to handle all data mutations. As such, you are required to illustrate the use of the different component lifecycle hooks of the framework used as well as the following key concepts of state management container used:
+   
+**Redux:**
+* State
+* Store
+* Reducers
+* Actions
+* Action creators
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Complementing the understanding of the JavaScript framework used, the quiz focuses on knowledge of scoping, function expressions (and how they differ from function declarations), references, process of variable and function declaration, order of evaluation, and a couple more things like delete operator, object and array instantiation, assignment and mutation as used in JavaScript. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+These are all relatively simple concepts, which we think every professional JavaScript developer should know. 
 
-### `yarn eject`
+Most of these are applied in practice quite often.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**API Endpoints:**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Browse**
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Method: GET**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Endpoint:** "[https://ti-react-test.herokuapp.com/users](https://ti-react-test.herokuapp.com/users)"
 
-## Learn More
+**Edit:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Method: PATCH** 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Endpoint:** "[https://ti-react-test.herokuapp.com/users/{id}](https://ti-react-test.herokuapp.com/users/%7Bid%7D)"
 
-### Code Splitting
+    Parameters: {
+      "user"=>{
+      "bio"=>"MyText",
+      "email"=>"MyString",
+      "name"=>"MyString",
+      "occupation"=>"MyString"
+      }
+    }
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+   ---------
 
-### Analyzing the Bundle Size
+**Submission:**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Extra points for pretty functionality.
 
-### Making a Progressive Web App
+Note that this task will require you to have a github/gitlab account. If you don't have either, you are required to setup one.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Once you have completed the assessment reply to this email with a link to the github repo (Please ensure that the repo is public). You can remove it once we have given you feedback.
