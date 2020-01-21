@@ -7,18 +7,27 @@ import UserEdit from '../user-edit/UserEdit'
 
 
 class UserList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
+    
     componentDidMount(){
         this.props.getUsers();
     }
+
+    componentDidUpdate(prevProps){
+        if (this.props !== prevProps){
+            if(this.props.userEdited !== prevProps.userEdited){
+                if(this.props.userEdited){
+                    this.props.getUsers()
+                }
+            }
+        }
+    }
+
     renderTableBody() {
         return this.props.users.map(user => {
             return <UserThumbnail user={ user } key={ user.id } />
         })
     }
+
     render() { 
         return ( 
             <div>
@@ -50,8 +59,10 @@ class UserList extends Component {
 UserList.propTypes = {
     users: PropTypes.array.isRequired,
     getUsers: PropTypes.func.isRequired,
+    userEdited: PropTypes.bool.isRequired
 }
 const mapStateToProps = (state) =>({
     users: state.users.userList,
+    userEdited: state.users.userEdited
 })
 export default connect(mapStateToProps, {getUsers})(UserList);

@@ -1,4 +1,4 @@
-import { FETCH_USERS, EDIT_USER, SET_CURRENT_USER, HANDLE_ERROR, TOGGLE_EDIT_MODE } from '../actions/types';
+import { FETCH_USERS, EDIT_USER, SET_CURRENT_USER, HANDLE_ERROR, TOGGLE_EDIT_MODE, RESET_USER_EDIT } from '../actions/types';
 
 const initialState = {
     userList: [],
@@ -20,8 +20,13 @@ export default function(state = initialState, action){
         case EDIT_USER:
             return {
                 ...state,
-                userEdited: action.payload
+                userEdited: true
             };
+        case RESET_USER_EDIT:
+            return {
+                ...state,
+                userEdited: false
+            }
         case SET_CURRENT_USER:
             return {
                 ...state,

@@ -8,32 +8,38 @@ class UserEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "Isaac", //this.props.currentUser.name,
-            occupation: "Doctor", //this.props.currentUser.occupation,
-            email: "izo@gmail.com", //this.props.currentUser.email,
-            bio: "I am a sofware dev" //this.props.currentUser.bio
+            name: "",
+            occupation: "",
+            email: "",
+            bio: ""
         }
-        console.log(this.state)
     }
+
+    componentDidUpdate(prevProps){
+        if(this.props.currentUser !== prevProps.currentUser) {
+            this.setState({
+                name: this.props.currentUser.name,
+                occupation: this.props.currentUser.occupation,
+                email: this.props.currentUser.email,
+                bio: this.props.currentUser.bio
+            })
+        }
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.editUser(this.state)
-        console.log(this.state)
+        const userData = JSON.stringify({user: this.state})
+        this.props.editUser(userData, this.props.currentUser.id)
+        this.hideModal()
     }
+
     hideModal = () => {
         const element = document.querySelector(".modal");
         element.style.display = "none";
         this.props.toggleEditMode();
     }
-    updateField = (event, fieldName)=> {
-        const val = event.target.value
-        this.setState({
-            fieldName: val
-        })
-    }
+
     render() { 
-        console.log(this.props.editMode)
-        
         return (
             <div className="modal" tabIndex="-1" role="dialog">
                 <div className="modal-dialog" role="document">
@@ -49,19 +55,42 @@ class UserEdit extends Component {
                         <form>
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
-                                <input type="text" className="form-control" id="name" aria-describedby="emailHelp" value={this.state.name} />
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    id="name"
+                                    value={this.state.name} 
+                                    onChange={e => this.setState({ name: e.target.value })}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="occupation">Occupation</label>
-                                <input type="text" className="form-control" id="occupation" value={this.state.occupation} />
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    id="occupation" 
+                                    value={this.state.occupation} 
+                                    onChange={e => this.setState({ occupation: e.target.value })}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
-                                <input type="email" className="form-control" id="email" value={this.state.email} />
+                                <input 
+                                    type="email" 
+                                    className="form-control" 
+                                    id="email" 
+                                    value={this.state.email} 
+                                    onChange={e => this.setState({ email: e.target.value })}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="bio">User Bio</label>
-                                <textarea className="form-control" id="bio" value={this.state.bio}></textarea>
+                                <textarea 
+                                    className="form-control" 
+                                    id="bio" 
+                                    value={this.state.bio}
+                                    onChange={e => this.setState({ bio: e.target.value })}
+                                ></textarea>
                             </div>
                             <button onClick={(e) => {this.handleSubmit(e)}} className="btn btn-primary">Submit</button>
                         </form>

@@ -1,4 +1,4 @@
-import { FETCH_USERS, TOGGLE_EDIT_MODE, SET_CURRENT_USER, HANDLE_ERROR, EDIT_USER } from "./types";
+import { FETCH_USERS, TOGGLE_EDIT_MODE, SET_CURRENT_USER, HANDLE_ERROR, EDIT_USER, RESET_USER_EDIT } from "./types";
 
 export const toggleEditMode = () => dispatch => {
     dispatch({
@@ -13,11 +13,18 @@ export const setCurrentUser = user => dispatch => {
     })
 }
 
-export const editUser = userData => dispatch => {
-    console.log("HHiii")
-    fetch('https://ti-react-test.herokuapp.com/users/', {
+export const resetUserEdited = () => dispatch => {
+    dispatch({ type: RESET_USER_EDIT })
+}
+
+export const editUser = (userData, userId) => dispatch => {
+    const url = `https://ti-react-test.herokuapp.com/users/${userId}`
+    fetch(url, {
         method: "PATCH",
-        body: JSON.stringify(userData)
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: userData
     })
     .then(response => {
         if(response.ok){
@@ -29,10 +36,7 @@ export const editUser = userData => dispatch => {
     })
     .then(data => {
         console.log(data)
-        dispatch({
-            type: EDIT_USER,
-            payload: true 
-        })
+        dispatch({ type: EDIT_USER })
     })
     .catch(error => {
         console.log(error)

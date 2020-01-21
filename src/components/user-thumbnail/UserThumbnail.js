@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {toggleEditMode, setCurrentUser} from '../../redux/actions/users'; 
+import {toggleEditMode, setCurrentUser, resetUserEdited} from '../../redux/actions/users'; 
 
 class UserThumbnail extends Component {
     editUser = () => {
         this.props.setCurrentUser(this.props.user);
         this.props.toggleEditMode();
+        this.props.resetUserEdited();
         this.showModal();
     }
     showModal = () => {
@@ -30,4 +31,4 @@ class UserThumbnail extends Component {
 const mapStateToProps = state => ({
 
 })
-export default connect(mapStateToProps, {toggleEditMode, setCurrentUser})(UserThumbnail);
+export default connect(mapStateToProps, {toggleEditMode, setCurrentUser, resetUserEdited})(UserThumbnail);
