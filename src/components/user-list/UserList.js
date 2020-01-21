@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUsers } from '../../redux/actions/users';
 import UserThumbnail from '../user-thumbnail/UserThumbnail';
-import UserEdit from '../user-edit/UserEdit'
+import UserEdit from '../user-edit/UserEdit';
 
 
 class UserList extends Component {
@@ -16,7 +16,7 @@ class UserList extends Component {
         if (this.props !== prevProps){
             if(this.props.userEdited !== prevProps.userEdited){
                 if(this.props.userEdited){
-                    this.props.getUsers()
+                    this.props.getUsers();
                 }
             }
         }
@@ -25,7 +25,7 @@ class UserList extends Component {
     renderTableBody() {
         return this.props.users.map(user => {
             return <UserThumbnail user={ user } key={ user.id } />
-        })
+        });
     }
 
     render() { 
@@ -33,7 +33,7 @@ class UserList extends Component {
             <div>
                 <UserEdit />
                 <h3 className="my-5">Users Table</h3>
-                <table id="userTable" className="table">
+                <table className="table">
                 <thead className="thead-dark">
                         <tr>
                             <th>#</th>
@@ -64,5 +64,5 @@ UserList.propTypes = {
 const mapStateToProps = (state) =>({
     users: state.users.userList,
     userEdited: state.users.userEdited
-})
+});
 export default connect(mapStateToProps, {getUsers})(UserList);

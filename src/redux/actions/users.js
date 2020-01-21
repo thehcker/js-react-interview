@@ -3,22 +3,22 @@ import { FETCH_USERS, TOGGLE_EDIT_MODE, SET_CURRENT_USER, HANDLE_ERROR, EDIT_USE
 export const toggleEditMode = () => dispatch => {
     dispatch({
         type: TOGGLE_EDIT_MODE
-    })
+    });
 }
 
 export const setCurrentUser = user => dispatch => {
     dispatch({
         type: SET_CURRENT_USER,
         payload: user
-    })
+    });
 }
 
 export const resetUserEdited = () => dispatch => {
-    dispatch({ type: RESET_USER_EDIT })
+    dispatch({ type: RESET_USER_EDIT });
 }
 
 export const editUser = (userData, userId) => dispatch => {
-    const url = `https://ti-react-test.herokuapp.com/users/${userId}`
+    const url = `https://ti-react-test.herokuapp.com/users/${userId}`;
     fetch(url, {
         method: "PATCH",
         headers: new Headers({
@@ -28,23 +28,20 @@ export const editUser = (userData, userId) => dispatch => {
     })
     .then(response => {
         if(response.ok){
-            console.log(response)
-            return response.json()
+            return response.json();
         }
-        throw new Error("Error updating user")
+        throw new Error("Error updating user");
         
     })
     .then(data => {
-        console.log(data)
         dispatch({ type: EDIT_USER })
     })
     .catch(error => {
-        console.log(error)
         dispatch({
             type: HANDLE_ERROR,
             payload: error.message
         })
-    })
+    });
    
 }
 export const getUsers = () => dispatch => {
@@ -59,12 +56,12 @@ export const getUsers = () => dispatch => {
         dispatch({
             type: FETCH_USERS,
             payload: data
-        })
+        });
     })
     .catch(error => {
         dispatch({
             type: HANDLE_ERROR,
             payload: error.message
-        })
-    })
+        });
+    });
 }

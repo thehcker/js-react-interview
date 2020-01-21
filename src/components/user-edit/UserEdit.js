@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './UserEdit.css'
+import './UserEdit.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleEditMode, editUser } from '../../redux//actions/users'
+import { toggleEditMode, editUser } from '../../redux//actions/users';
 
 class UserEdit extends Component {
     constructor(props) {
@@ -22,15 +22,15 @@ class UserEdit extends Component {
                 occupation: this.props.currentUser.occupation,
                 email: this.props.currentUser.email,
                 bio: this.props.currentUser.bio
-            })
+            });
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const userData = JSON.stringify({user: this.state})
-        this.props.editUser(userData, this.props.currentUser.id)
-        this.hideModal()
+        const userData = JSON.stringify({user: this.state});
+        this.props.editUser(userData, this.props.currentUser.id);
+        this.hideModal();
     }
 
     hideModal = () => {
@@ -111,5 +111,5 @@ const mapStateToProps = state => ({
     currentUser: state.users.currentUser,
     editMode: state.users.editMode,
     userEdited: state.users.userEdited
-})
+});
 export default connect(mapStateToProps, {toggleEditMode, editUser})(UserEdit);
