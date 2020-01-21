@@ -32,25 +32,26 @@ class UserList extends Component {
         return ( 
             <div>
                 <UserEdit />
-                <h3 className="my-5">Users Table</h3>
-                <table className="table">
-                <thead className="thead-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Occupation</th>
-                            <th>Email</th>
-                            <th>Bio</th>
-                            <th>Created</th>
-                            <th>Updated</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.renderTableBody() }
-                    </tbody>
-                </table>
-
+                <div className="container-fluid">
+                    <h3 className="my-5">Users Table</h3>
+                    <table className="table">
+                    <thead className="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Occupation</th>
+                                <th>Email</th>
+                                <th>Bio</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            { this.renderTableBody() }
+                        </tbody>
+                    </table>
+                </div>
                 
             </div>
          );
