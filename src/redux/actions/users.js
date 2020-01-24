@@ -33,7 +33,7 @@ export const editUser = (userData, userId) => dispatch => {
             message.style.display = 'block';
             setTimeout(() => {
                 message.style.display = 'none';
-            }, 1000)
+            }, 1500)
             
             return response.json();
         }
