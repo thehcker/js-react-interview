@@ -33,6 +33,7 @@ class UserList extends Component {
             <div>
                 <UserEdit />
                 <div className="container-fluid">
+                    <div id="message" className="alert alert-success"></div>
                     <h3 className="my-5">Users Table</h3>
                     <table className="table">
                     <thead className="thead-dark">

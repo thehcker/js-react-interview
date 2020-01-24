@@ -28,6 +28,13 @@ export const editUser = (userData, userId) => dispatch => {
     })
     .then(response => {
         if(response.ok){
+            let message =  document.getElementById('message');
+            message.textContent = 'User updated successfully!';
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 1000)
+            
             return response.json();
         }
         throw new Error("Error updating user");
